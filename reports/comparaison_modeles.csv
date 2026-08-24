@@ -1,0 +1,5 @@
+modele,auc_validation,auc_test,ap_test,exactitude_test,rappel_test,precision_test
+Régression logistique,0.8457,0.8499,0.6572,0.8075,0.5332,0.673
+Forêt aléatoire,0.843,0.8432,0.6455,0.803,0.4968,0.6744
+Gradient boosting,0.8307,0.8243,0.6185,0.7831,0.4818,0.6164
+Classe majoritaire,0.5,0.5,0.2652,0.7348,0.0,0.0

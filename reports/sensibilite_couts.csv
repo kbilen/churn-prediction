@@ -1,0 +1,6 @@
+rapport_couts,seuil_optimal,part_clients_contactes_%,departs_manques,gain_vs_defaut_%
+2:1,0.358,33.0,136,6.1
+5:1,0.177,51.2,51,38.9
+10:1,0.079,66.0,17,61.7
+20:1,0.049,72.8,4,79.9
+50:1,0.01,92.9,1,88.9
