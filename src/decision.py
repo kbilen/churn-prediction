@@ -29,13 +29,14 @@ import numpy as np
 import pandas as pd
 
 COUT_FN = 500.0   # client perdu faute d'avoir été identifié
-COUT_FP = 50.0    # geste commercial offert inutilement
+COUT_FP = 50.0    # geste commercial, payé pour chaque client contacté
 
 
 def cout_total(y_vrai, y_pred, cout_fn=COUT_FN, cout_fp=COUT_FP):
     fn = int(((y_vrai == 1) & (y_pred == 0)).sum())
     fp = int(((y_vrai == 0) & (y_pred == 1)).sum())
-    return fn * cout_fn + fp * cout_fp, fn, fp
+    contactes = int((y_pred == 1).sum())
+    return fn * cout_fn + contactes * cout_fp, fn, fp
 
 
 def balayer(y_vrai, proba, cout_fn=COUT_FN, cout_fp=COUT_FP, n=201):

@@ -102,7 +102,7 @@ def main():
     # ------------------------------------------------------------------ 3
     titre("3. Choix du seuil de décision par le coût")
     print(f"  hypothèses : client perdu = {decision.COUT_FN:.0f} €, "
-          f"geste commercial inutile = {decision.COUT_FP:.0f} €")
+          f"geste commercial = {decision.COUT_FP:.0f} € par client contacté")
 
     oof_meilleur = catalogue[meilleur]
     seuil, balayage = decision.seuil_optimal(y_train.values, oof_meilleur)

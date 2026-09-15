@@ -6,7 +6,7 @@ moins, et c'est là que se joue l'essentiel.
 
 Ce projet va jusqu'à la décision : à partir de quelle probabilité faut-il
 appeler un client pour le retenir ? La réponse n'est pas 0,50, et l'écart
-représente **62 % du coût du dispositif**.
+représente **près de la moitié du coût du dispositif**.
 
 ![Profil de risque](figures/profil_risque.png)
 
@@ -23,11 +23,11 @@ Ce qui change tout arrive après :
 | Stratégie | Clients contactés | Départs évités | Départs manqués | Coût |
 |---|---|---|---|---|
 | Ne rien faire | 0 | 0 | 467 | 233 500 € |
-| Seuil par défaut (0,50) | 370 | 249 | 218 | 115 050 € |
-| **Seuil optimisé (0,08)** | 1 162 | **450** | **17** | **44 100 €** |
+| Seuil par défaut (0,50) | 370 | 249 | 218 | 127 500 € |
+| **Seuil optimisé (0,08)** | 1 162 | **450** | **17** | **66 600 €** |
 
 **Même modèle, mêmes probabilités, aucun réentraînement — seul le seuil de
-décision a bougé. 70 950 € économisés, soit 62 %.**
+décision a bougé. 60 900 € économisés, soit 48 %.**
 
 ---
 
@@ -44,7 +44,8 @@ Ici, ce n'est pas du tout le cas :
 - **laisser partir un client sans réagir** coûte la valeur du contrat perdu,
   soit environ **500 €**
 - **offrir un geste commercial à un client qui serait resté** coûte le geste
-  lui-même, soit environ **50 €**
+  lui-même, soit environ **50 €** — payé pour chaque client contacté,
+  qu'il ait réellement eu l'intention de partir ou non
 
 Une erreur coûte dix fois l'autre. Le bon seuil est donc bien plus bas que
 0,50 : mieux vaut appeler plusieurs clients pour rien que d'en laisser filer un
@@ -66,14 +67,15 @@ ce qui se passe quand on les change :
 
 | Rapport des coûts | Seuil optimal | Clients contactés | Départs manqués | Gain vs défaut |
 |---|---|---|---|---|
-| 2:1 | 0,36 | 33 % | 136 | +6 % |
-| 5:1 | 0,18 | 51 % | 51 | +39 % |
-| **10:1** | **0,08** | **66 %** | **17** | **+62 %** |
-| 20:1 | 0,05 | 73 % | 4 | +80 % |
-| 50:1 | 0,01 | 93 % | 1 | +89 % |
+| 2:1 | 0,52 | 20 % | 238 | −2 % |
+| 5:1 | 0,21 | 46 % | 67 | +22 % |
+| **10:1** | **0,08** | **66 %** | **17** | **+48 %** |
+| 20:1 | 0,05 | 73 % | 4 | +71 % |
+| 50:1 | 0,01 | 93 % | 1 | +85 % |
 
 Ce tableau dit deux choses. D'abord, **le gain annoncé dépend entièrement d'une
-hypothèse métier** : à 2:1 il tombe à 6 %. Ensuite, **au-delà d'un certain
+hypothèse métier** : à 2:1, le seuil optimal théorique est déjà 0,50 et
+optimiser n'apporte rien (−2 %, dans le bruit). Ensuite, **au-delà d'un certain
 rapport le modèle devient inutile** — à 50:1 il recommande de contacter 93 % de
 la base, ce qu'on aurait pu décider sans lui.
 
@@ -90,7 +92,7 @@ donnée. Établir cette fenêtre est un travail préalable, pas un détail.
 |---|---|---|---|---|---|
 | **Régression logistique** | 0,846 | **0,850** | 0,657 | 0,808 | 0,533 |
 | Forêt aléatoire | 0,843 | 0,843 | 0,646 | 0,803 | 0,497 |
-| Gradient boosting | 0,829 | 0,827 | 0,632 | 0,787 | 0,501 |
+| Gradient boosting | 0,831 | 0,824 | 0,619 | 0,783 | 0,482 |
 | Classe majoritaire | 0,500 | 0,500 | 0,265 | **0,735** | 0,000 |
 
 Deux enseignements.

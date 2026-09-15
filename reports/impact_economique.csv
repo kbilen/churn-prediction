@@ -1,4 +1,4 @@
 strategie,seuil,clients_contactes,departs_evites,faux_negatifs,faux_positifs,cout_euros,gain_vs_defaut_%
-Ne rien faire,,0,0,467,0,233500,-103.0
-"Seuil par défaut (0,50)",0.5,370,249,218,121,115050,0.0
-Seuil optimisé (0.08),0.079,1162,450,17,712,44100,61.7
+Ne rien faire,,0,0,467,0,233500,-83.1
+"Seuil par défaut (0,50)",0.5,370,249,218,121,127500,0.0
+Seuil optimisé (0.08),0.079,1162,450,17,712,66600,47.8
